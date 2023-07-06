@@ -15,7 +15,7 @@ import (
   NOTES: Hash performance is always faster albeit slightly
 */
 
-func TestTwoSum(t *testing.T) { // Run 'go test -test.v' to see output in stdout
+func TestTwoSum(t *testing.T) { // Run 'go test -test.v' to see logs in stdout
 	var testCases = []struct {
 		nums   []int
 		target int

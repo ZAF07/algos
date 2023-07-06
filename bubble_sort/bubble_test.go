@@ -2,17 +2,34 @@ package main
 
 import (
 	"fmt"
+	"testing"
+
+	"gopkg.in/go-playground/assert.v1"
 )
 
-func main() {
-	nums := []int{5, 2, 9, 6, 1, 8}
-	result := bubble(nums)
-	res := bubbleTwo(nums)
-	fmt.Println(result)
-	fmt.Println(res)
+func TestBubbleSort(t *testing.T) { // Run 'go test <path> -test.v' to see logs in stdout
+	tests := []struct {
+		nums []int
+		want []int
+	}{
+		{[]int{5, 2, 9, 6, 1, 8}, []int{1, 2, 5, 6, 8, 9}},
+		{[]int{5, 2, 3, 6, 1, 4}, []int{1, 2, 3, 4, 5, 6}},
+		{[]int{15, 12, 13, 16, 11, 14}, []int{11, 12, 13, 14, 15, 16}},
+		{[]int{15, 2, 3, 26, 1, 45}, []int{1, 2, 3, 15, 26, 45}},
+		{[]int{50, 23, 31, 62, 12, 4}, []int{4, 12, 23, 31, 50, 62}},
+	}
+
+	for _, tt := range tests {
+		testName := fmt.Sprintf("Given : %v, Want: %v", tt.nums, tt.want)
+		t.Run(testName, func(t *testing.T) {
+			got := Bubble(tt.nums)
+			// t.Logf("RETURNED: %v", got)
+			assert.Equal(t, tt.want, got)
+		})
+	}
 }
 
-func bubble(arr []int) []int {
+func Bubble(arr []int) []int {
 	// outer pass goes through the entire length of the array
 	for i := 0; i < len(arr); i++ {
 		// inner pass goes through the entire length of the array as well
@@ -29,6 +46,7 @@ func bubble(arr []int) []int {
 	return arr
 }
 
+// Slight convenience , slightly confusing for others to read ...
 func bubbleTwo(nums []int) []int {
 	// compare current and next value, if next is > current, swap positions
 	for i := 0; i < len(nums); i++ { // First pass goes through the entire array.

@@ -38,16 +38,15 @@ Test and evaluate the solutions based on your requirements and constraints.
 ### Running algos with Go
 For solutions in Go, I have implemented them in the Go testing package.
 
-To run the solutions with Go, run the following command:
+To run the solutions with Go, you can utilise Make commands.
+
+For example, to run the Two Sum solution in Go with its filename==**two_sum_test.go**, you simply pass its filename as an argument prefixing it with **go**`-<name-of-go-test-file>` and omitting the **_test** to the Make command:
+> ***_EXAMPLE:__** two_sum_test.go == go-two-sum
 ```bash
-go test <path>/<to>/<_test.go>
-```
-And the following to view all logs in stdout:
-```bash
-go test <path>/<to>/<_test.go> -test.v
+make go-two-sum
 ```
 
-> **_TIP:__** You can also run Go solutions using Makefile commands
+> **_TIP:__** You can also simply run **go test <file-path-to-go-test-file>**
 
 
 ### Contributing

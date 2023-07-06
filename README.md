@@ -47,6 +47,8 @@ And the following to view all logs in stdout:
 go test <path>/<to>/<_test.go> -test.v
 ```
 
+> **_TIP:__** You can also run Go solutions using Makefile commands
+
 
 ### Contributing
 Contributions to this repository are welcome and encouraged. If you have a new algorithmic problem or a different solution to an existing problem, follow these steps to contribute:

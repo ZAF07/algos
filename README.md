@@ -49,7 +49,7 @@ make go-two-sum
 
 To view logs in **stdout** when running the solution, pass the flag:
 ```bash
-make go-two-sum -V=TRUE
+make go-two-sum V=TRUE
 ```
 
 > **_TIP:_** You can also simply run **go test `<file-path-to-go-test-file>**`

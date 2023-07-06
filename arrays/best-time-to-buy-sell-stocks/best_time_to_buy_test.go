@@ -2,17 +2,40 @@ package main
 
 import (
 	"fmt"
+	"testing"
+
+	"gopkg.in/go-playground/assert.v1"
 )
 
-func main() {
+/*
+	Find the best time to buy & sell stocks to get the max profit
+	Example: [2,1,4,5,3] == 4 (we buy at 1 & sell at 5 to make a $4 profit)
 
-	stocks := []int{3, 1, 3, 2, 21}
-	res := calcBestProfit(stocks)
-	res1 := myOwn(stocks)
-	fmt.Println(res, res1)
+*/
+
+func TestCalcBestProfit(t *testing.T) {
+	tests := []struct {
+		stocks []int
+		want   int
+	}{
+		{[]int{2, 1, 4, 5, 3}, 4},
+		{[]int{2, 13, 4, 5, 3}, 11},
+		{[]int{2, 1, 421, 51, 35}, 420},
+		{[]int{2, 10, 153, 5, 1}, 151},
+		{[]int{2, 11, 4, 2, 9}, 9},
+	}
+
+	for _, tt := range tests {
+		testName := fmt.Sprintf("Given: %v, Want: %v", tt.stocks, tt.want)
+		t.Run(testName, func(t *testing.T) {
+			got := CalcBestProfit(tt.stocks)
+			assert.Equal(t, tt.want, got)
+		})
+	}
+
 }
 
-func calcBestProfit(stocks []int) int {
+func CalcBestProfit(stocks []int) int {
 	minPrice := 1000
 	maxProfit := 0
 	for _, s := range stocks {

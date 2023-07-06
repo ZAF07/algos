@@ -41,12 +41,12 @@ For solutions in Go, I have implemented them in the Go testing package.
 To run the solutions with Go, you can utilise Make commands.
 
 For example, to run the Two Sum solution in Go with its filename==**two_sum_test.go**, you simply pass its filename as an argument prefixing it with **go**`-<name-of-go-test-file>` and omitting the **_test** to the Make command:
-> ***_EXAMPLE:__** two_sum_test.go == go-two-sum
+> ***_EXAMPLE:_** two_sum_test.go == go-two-sum
 ```bash
 make go-two-sum
 ```
 
-> **_TIP:__** You can also simply run **go test <file-path-to-go-test-file>**
+> **_TIP:_** You can also simply run **go test <file-path-to-go-test-file>**
 
 
 ### Contributing

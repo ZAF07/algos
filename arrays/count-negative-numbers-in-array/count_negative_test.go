@@ -20,12 +20,6 @@ Constraints: Grids are sorted in decending order
 Hard: Try to solve it when girds are not sorted
 */
 
-// func main() {
-// 	grid := [][]int{{4, 3, 2, -1}, {3, 2, 1, -1}, {1, 1, -1, -2}, {-1, -1, -2, -3}}
-// 	res := countNegativeNumbers(grid)
-// 	fmt.Println(res)
-// }
-
 func TestCountNegativeNumbers(t *testing.T) {
 	tests := []struct {
 		grid [][]int

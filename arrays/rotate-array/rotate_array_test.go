@@ -7,6 +7,15 @@ import (
 	"gopkg.in/go-playground/assert.v1"
 )
 
+/*
+	Given an array of integers, you are to rotate the order of the integers k number of times to the right
+
+	Example 1:
+	Input: [1,2,3], k = 2
+	Output: [2,3,1]
+	Solution: 1 would shift place to the right 2 times, 2 would shift right 2 times and so will 3...
+*/
+
 func TestRotateArray(t *testing.T) {
 	tests := []struct {
 		nums []int

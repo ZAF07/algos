@@ -1,6 +1,11 @@
-package main
+package removeduplicates
 
-import "fmt"
+import (
+	"fmt"
+	"testing"
+
+	"gopkg.in/go-playground/assert.v1"
+)
 
 /*
 	Task is to remove any duplicate element in the array and return the number of remaining elements in the array
@@ -11,14 +16,29 @@ import "fmt"
 	💡This runs at 0(n) time complexity
 */
 
-func main() {
-	nums := make([]int, 3)
-	nums = []int{1, 3, 1, 3, 1, 2, 3, 2}
-	countStripDuplicates := removeDuplicates(nums)
-	fmt.Println("End result count: ", countStripDuplicates)
+func TestRemoveDuplicates(t *testing.T) {
+	tests := []struct {
+		nums []int
+		want int
+	}{
+		{[]int{1, 2, 1, 1}, 2},
+		{[]int{0, 2, 1, 2}, 3},
+		{[]int{0, 2, 1, 2, 3, 4, 1, 2, 4}, 5},
+		{[]int{6, 3, 1, 2}, 4},
+		{[]int{2, 2, 1, 12}, 3},
+		{[]int{1, 1, 1, 2}, 2},
+	}
+
+	for _, tt := range tests {
+		testName := fmt.Sprintf("Ecpected : %v", tt.want)
+		t.Run(testName, func(t *testing.T) {
+			got := RemoveDuplicates(tt.nums)
+			assert.Equal(t, tt.want, got)
+		})
+	}
 }
 
-func removeDuplicates(arr []int) int {
+func RemoveDuplicates(arr []int) int {
 	fmt.Println("Given slice: ", arr)
 	seen := make(map[int]int)
 	idx := 0

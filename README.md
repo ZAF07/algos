@@ -2,10 +2,12 @@
 This repository contains a collection of various solutions to random algorithm tests. It serves as a resource for exploring different approaches and solutions to algorithmic problems.
 
 <h2>Table of Contents</h2>
-[Introduction](#introduction)
-[Usage](#usage)
-[Running algos with Go](#running-algos-with-go)
-[Contributing](#contributing)
+<ol>
+<li>[Introduction](#introduction)</li>
+<li>[Usage](#usage)</li>
+<li>[Running algos with Go](#running-algos-with-go)</li>
+<li>[Contributing](#contributing)</li>
+</ol>
 
 ### Introduction
 The Random Algorithm Tests Repository is a collection of algorithms and their corresponding solutions. The goal of this repository is for me to get better at solvinga diverse set of algorithmic problems along with multiple solutions, showcasing different approaches, optimizations, and trade-offs.

@@ -2,6 +2,9 @@ package main
 
 import (
 	"fmt"
+	"testing"
+
+	"gopkg.in/go-playground/assert.v1"
 )
 
 /*
@@ -17,13 +20,27 @@ Incrementing by one gives 123 + 1 = 124.
 Thus, the result should be [1,2,4].
 */
 
-func main() {
-	nums := []int{1, 9, 9}
-	res := plusOne(nums)
-	fmt.Println(res)
+func TestPlusOne(t *testing.T) {
+	tests := []struct {
+		digits []int
+		want   []int
+	}{
+		{[]int{1, 9, 9}, []int{2, 0, 0}},
+		{[]int{9, 9, 9}, []int{1, 0, 0, 0}},
+		{[]int{1}, []int{2}},
+		{[]int{2, 4}, []int{2, 5}},
+		{[]int{3, 2, 4, 4}, []int{3, 2, 4, 5}},
+	}
+	for _, tt := range tests {
+		testName := fmt.Sprintf("Ecpected: %v", tt.want)
+		t.Run(testName, func(t *testing.T) {
+			got := PlusOne(tt.digits)
+			assert.Equal(t, tt.want, got)
+		})
+	}
 }
 
-func plusOne(digits []int) []int {
+func PlusOne(digits []int) []int {
 	n := len(digits)
 	for i := n - 1; i >= 0; i-- {
 		// Because we are starting from the end of the slice, if the element is < 9 (1 - 8), we can simply increment its value by 1 and return the entire slice

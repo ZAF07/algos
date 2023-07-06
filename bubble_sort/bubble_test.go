@@ -7,6 +7,15 @@ import (
 	"gopkg.in/go-playground/assert.v1"
 )
 
+/*
+	Given an unsorted array, sort the given array in ascending order
+
+	Example 1:
+	Input: [5,2,4,1,3]
+	Output: [1,2,3,4,5]
+	Solution: Sort the given array in ascending order
+*/
+
 func TestBubbleSort(t *testing.T) { // Run 'go test <path> -test.v' to see logs in stdout
 	tests := []struct {
 		nums []int

@@ -8,7 +8,19 @@ import (
 )
 
 /*
-	For Binary Sort to work, the slice has to be sorted.
+	For Binary Search to work, the slice has to be sorted.
+
+	Given an array which is sorted, find the index at which the target is located at.
+
+	Example 1:
+	Input: [1,2,3,4,5], target = 5
+	Output: 4
+	Solution: The target 5 is located at index 5 of the array
+
+	Example 2:
+	Input: [1,2,3,4,5], target = 2
+	Output: 1
+	Solution: The target 2 is located at index 1 of the array
 */
 
 func TestBinarySearch(t *testing.T) {

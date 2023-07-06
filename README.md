@@ -10,7 +10,7 @@ This repository contains a collection of various solutions to random algorithm t
 
 
 ### Introduction
-The Random Algorithm Tests Repository is a collection of algorithms and their corresponding solutions. The goal of this repository is for me to get better at solvinga diverse set of algorithmic problems along with multiple solutions, showcasing different approaches, optimizations, and trade-offs.
+The Random Algorithm Tests Repository is a collection of algorithms and their corresponding solutions. The goal of this repository is for me to get better at solving a diverse set of algorithmic problems along with multiple solutions, showcasing different approaches, optimizations, and trade-offs.
 
 ### Usage
 To use this repository, you can follow these steps:

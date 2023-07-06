@@ -7,6 +7,20 @@ import (
 	"gopkg.in/go-playground/assert.v1"
 )
 
+/*
+	An integer is considered a palindrome if its sequence reads the same backwards as forwards
+
+	Example 1:
+	Input: 121
+	Output: true
+	Solution: The above is true becaue it reads 121 starting from both left and right
+
+	Example 2:
+	Input: 132
+	Output: false
+	Solution: The above is false becaue it does not read the same starting from both left and right
+*/
+
 func TestPalindrome(t *testing.T) {
 	var tests = []struct {
 		num  int

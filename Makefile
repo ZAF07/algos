@@ -69,3 +69,10 @@ go-best-time-to-buy:
 	else\
 		go test arrays/best-time-to-buy-sell-stocks/best_time_to_buy_test.go;\
   fi
+
+go-majority-element:
+	@if [ $V == "TRUE" ]; then\
+		go test arrays/majority-element/majority_element_test.go -test.v;\
+	else\
+		go test arrays/majority-element/majority_element_test.go;\
+	fi

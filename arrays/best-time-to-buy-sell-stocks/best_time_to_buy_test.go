@@ -54,7 +54,7 @@ func CalcBestProfit(stocks []int) int {
 }
 
 // Works the same as above but has extra work to perform with the omitted continue keyword (Above method should be optimal) o(N)
-func myOwn(stocks []int) int {
+func CalcBestProfit2(stocks []int) int {
 	low := 100
 	high := 0
 

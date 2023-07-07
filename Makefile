@@ -76,3 +76,10 @@ go-majority-element:
 	else\
 		go test arrays/majority-element/majority_element_test.go;\
 	fi
+
+go-search-in-rotated-array:
+	@if [ $V == "TRUE" ]; then\
+		go test arrays/search-in-rotated-array/search_in_rotated_array_test.go -test.v;\
+	else\
+		go test arrays/search-in-rotated-array/search_in_rotated_array_test.go;\
+	fi

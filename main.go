@@ -5,8 +5,8 @@ import "fmt"
 // Package main is for quick testing of written code without the Go Test package
 
 func main() {
-	nums := []int{1} // len = 6
-	fmt.Println(search(nums, 0))
+	nums := []int{4, 5, 6, 0, 1, 2, 3} // len = 6
+	fmt.Println(search(nums, 6))
 }
 
 func search(nums []int, target int) int {
@@ -32,7 +32,6 @@ func search(nums []int, target int) int {
 }
 
 func binarySearch(nums []int, left, right, target int) int {
-	// 5,4
 	for left <= right {
 		mid := (left + right) / 2
 
@@ -82,7 +81,5 @@ func findPivot(nums []int) int {
 			right = mid
 		}
 	}
-
-	fmt.Println("THE P[IVOT]: ", left)
 	return left
 }

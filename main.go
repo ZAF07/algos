@@ -1,63 +1,45 @@
-package searchinrotatedarray
+package main
 
-import (
-	"fmt"
-	"testing"
+import "fmt"
 
-	"gopkg.in/go-playground/assert.v1"
-)
+// Package main is for quick testing of written code without the Go Test package
 
-func TestSearchInRotatedArray(t *testing.T) {
-	tests := []struct {
-		nums   []int
-		target int
-		want   int
-	}{
-		{[]int{4, 5, 6, 7, 0, 1, 2}, 0, 4},
-		{[]int{4, 5, 6, 7, 0, 1, 2}, 3, -1},
-		{[]int{4, 5, 6, 7, 0, 1, 2}, -1, -1},
-		{[]int{3, 1, 2}, 3, 0},
-		{[]int{3, 1, 2}, 4, -1},
-		{[]int{3, 1, 2}, 0, -1},
-		{[]int{2, 1}, 1, 1},
-		{[]int{2, 1}, 4, -1},
-		{[]int{2, 1}, 0, -1},
-	}
-
-	for _, tt := range tests {
-		testName := fmt.Sprintf("Given: %v, Want: %v", tt.nums, tt.want)
-		t.Run(testName, func(t *testing.T) {
-			got := SearchInRotatedArray(tt.nums, tt.target)
-			// got := SearchInRotatedArray2(tt.nums, tt.target)
-			assert.Equal(t, tt.want, got)
-		})
-	}
+func main() {
+	nums := []int{1} // len = 6
+	fmt.Println(search(nums, 0))
 }
 
-// Time: O(log n) || Space: O(1)
-func SearchInRotatedArray(nums []int, target int) int {
+func search(nums []int, target int) int {
+
+	if len(nums) == 1 {
+		if nums[0] == target {
+			return 0
+		}
+		return -1
+	}
+
 	pivot := findPivot(nums)
 
-	// if pivot is -1, this means that the given array is not rotated, so we can simply pass in the entire array to the Binary Search
 	if pivot == -1 {
 		return binarySearch(nums, 0, len(nums)-1, target)
 	}
 
-	// Remember that the given array is sorted in ascending order (elements to the right are always greater than left unless rotated) AND rotated, so if the target is < nums[0], we can start at the pivot point (the smallest element in the given array)
 	if target < nums[0] {
 		return binarySearch(nums, pivot, len(nums)-1, target)
-		// If the target is > than nums[0], we pass in the array from nums[0] up untill the pivot -1 (pivot is the smallest possible element in the array, so the element that comes right before it must the the largest)
 	} else {
 		return binarySearch(nums, 0, pivot-1, target)
 	}
 }
 
 func binarySearch(nums []int, left, right, target int) int {
+	// 5,4
 	for left <= right {
 		mid := (left + right) / 2
+
 		if nums[mid] == target {
 			return mid
 		}
+
 		if nums[mid] > target {
 			right = mid - 1
 		}
@@ -69,7 +51,7 @@ func binarySearch(nums []int, left, right, target int) int {
 	return -1
 }
 
-// Find the pivot index (the point where the array is rotated aka the smallest element in the array) if it exists, return -1 otherwise
+// Find the pivot index if it exists, return -1 otherwise
 func findPivot(nums []int) int {
 	// Since all elements in the array are unique,
 	// if the array is rotated, the first element will be greater than the last element.
@@ -79,7 +61,7 @@ func findPivot(nums []int) int {
 	}
 
 	// Binary search for the pivot index
-	// The element at the pivot index will be the smallest element in the array
+	// The element at the pivot index will be the largest element in the array
 	ref := nums[0]
 
 	left := 0
@@ -101,5 +83,6 @@ func findPivot(nums []int) int {
 		}
 	}
 
+	fmt.Println("THE P[IVOT]: ", left)
 	return left
 }

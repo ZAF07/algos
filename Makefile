@@ -83,3 +83,10 @@ go-search-in-rotated-array:
 	else\
 		go test arrays/search-in-rotated-array/search_in_rotated_array_test.go;\
 	fi
+
+go-maximum-average-subarray-one:
+	@if [ $V == "TRUE" ]; then\
+		go test sliding-window/maximum_average_subarray_one_test.go -test.v;\
+	else\
+		go test sliding-window/maximum_average_subarray_one_test.go;\
+	fi

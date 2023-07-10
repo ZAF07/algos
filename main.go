@@ -7,8 +7,8 @@ import "fmt"
 func main() {
 	// nums := []int{4, 5, 6, 0, 1, 2, 3} // len = 6 | max = 15
 	// nums := []int{4, 5, 6, 10, 120, 2, 3} // len = 6 | max = 141
-	// nums := []int{4, 50, 6, 10, 120, 2, 10} // len = 6 | max = 142
-	nums := []int{2} // len = 6 | max = 142
+	nums := []int{4, 50, 6, 10, 120, 2, 10} // len = 6 | max = 142
+	// nums := []int{2, 4} // len = 6 | max = 142
 	fmt.Println(maxAvgSum(nums, 1))
 }
 
@@ -20,7 +20,7 @@ func maxAvgSum(nums []int, k int) int {
 	// Get the first k elements in the nums array and calculate the sum
 	maxSum = getSum(nums[0:k]...)
 
-	for i := 1; i < len(nums)-k+1; i++ {
+	for i := 1; i < len(nums)-k; i++ {
 		// tempSum := (maxSum - nums[i-1]) + nums[i+k-1]
 		tempSum := getSum(nums[i : i+k]...)
 		if tempSum > maxSum {

@@ -90,3 +90,10 @@ go-maximum-average-subarray-one:
 	else\
 		go test sliding-window/maximum_average_subarray_one_test.go;\
 	fi
+
+go-minimum-size-subarray-sum:
+	@if [ $V == "TRUE" ]; then\
+		go test sliding-window/minimum_size_subarray_sum_test.go -test.v;\
+	else\
+		go test sliding-window/minimum_size_subarray_sum_test.go;\
+	fi

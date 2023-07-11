@@ -59,6 +59,8 @@ func TestSearchInRotatedArray(t *testing.T) {
 
 // Time: O(log n) || Space: O(1)
 func SearchInRotatedArray(nums []int, target int) int {
+	// First we find the pivot point of the rotated array
+	// This is so we can perform Binary Search (Which works well with a sorted array) on either the right/left half
 	pivot := findPivot(nums)
 
 	// if pivot is -1, this means that the given array is not rotated, so we can simply pass in the entire array and perform Binary Search on it

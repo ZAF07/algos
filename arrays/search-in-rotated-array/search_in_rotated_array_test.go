@@ -61,7 +61,7 @@ func TestSearchInRotatedArray(t *testing.T) {
 func SearchInRotatedArray(nums []int, target int) int {
 	pivot := findPivot(nums)
 
-	// if pivot is -1, this means that the given array is not rotated, so we can simply pass in the entire array to the Binary Search
+	// if pivot is -1, this means that the given array is not rotated, so we can simply pass in the entire array and perform Binary Search on it
 	if pivot == -1 {
 		return binarySearch(nums, 0, len(nums)-1, target)
 	}

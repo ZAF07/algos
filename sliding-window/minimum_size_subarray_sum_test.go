@@ -54,16 +54,22 @@ func minimumSizeSubarray(nums []int, target int) int {
 	sum := 0
 	min := math.Inf(1)
 
+	// Loop the entire array. This is still O(N) because we are using the Dynamic Sliding Window technique to either shrink or grow the window to get the sum of window of size (N)
 	for right < len(nums) {
+		// Capture the sum of the current window. We add to the sum variable here
 		sum += nums[right]
 
+		// As long as the sum >= target, we shrink the window from the left and recalculate if the sum is still >= target && if its window size is < the current minimum window size
 		for sum >= target {
 			size := right - left + 1
+			// Min becomes the lesser of the two (size & min)
 			min = math.Min(float64(size), min)
-
+			//  Here we are shrinking the window from the left to check if sum is still >= target with the given values with a smaller window size (left +1)
 			sum -= nums[left]
+			// Don't forget to bring the left pointer to the right by one step !!
 			left++
 		}
+		// Here, because sum is no longer >= target, we increase the right pointer by one (we have already calculated all the window possibilities up untill right. Time to grow the window)
 		right++
 	}
 

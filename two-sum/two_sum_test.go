@@ -44,12 +44,18 @@ func TestTwoSum(t *testing.T) { // Run 'go test -test.v' to see logs in stdout
 }
 
 func TwoSum(nums []int, target int) []int {
-	pair := make(map[int]int) // Data structure to store integer needed to add to equal target
+	// Store the missin pair needed to make up target
+	pair := make(map[int]int)
 
 	for k, v := range nums {
+		// Check if the missing pair for the current value is in the hash map
 		if val, ok := pair[v]; ok {
+			// Return the two indexes of the pair that makes up the target
 			return []int{k, val}
 		}
+		// Store in the hash map the missing pair needed to make the target
+		// The key would be the value of the missing pair (target - current value (num[i]) )
+		// The value would be the index of the array where we can find the current pair
 		pair[target-v] = k
 	}
 	return []int{}

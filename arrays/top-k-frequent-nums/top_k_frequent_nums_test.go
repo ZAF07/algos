@@ -31,14 +31,16 @@ func TestTopKFrequentNums(t *testing.T) {
 		k    int
 		want []int
 	}{
+		{[]int{1}, 1, []int{1}},
 		{[]int{1, 2, 2, 1, 3}, 2, []int{1, 2}},
+		{[]int{1, 1, 1, 2, 2, 3, 3}, 2, []int{1, 2}},
 		{[]int{1, 2, 2, 1, 3}, 3, []int{1, 2, 3}},
 		{[]int{1, 2, 2, 1, 3, 1}, 1, []int{1}},
 		{[]int{1, 2, 2, 1, 3, 3, 3, 1}, 2, []int{1, 3}},
 	}
 
 	for _, tt := range tests {
-		testName := fmt.Sprintf("Expected : %v", tt.want)
+		testName := fmt.Sprintf("Given: %v, Want : %v", tt.nums, tt.want)
 		t.Run(testName, func(t *testing.T) {
 			got := GetTopKEl(tt.nums, tt.k)
 			assert.Equal(t, tt.want, got) // 🚨 Slight bug here. The returned slice may not be in the same order as tt.want. But the answer is still correct. Fix this when time permits
@@ -79,5 +81,5 @@ func GetTopKEl(nums []int, k int) []int {
 			break
 		}
 	}
-	return res
+	return res[0:k]
 }

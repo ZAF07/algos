@@ -1,39 +1,49 @@
+
+var node4 = {
+  'name': 'Node 4',
+  'val': 4,
+  'left': null,
+  'right': null,
+}
 var node3 = {
+  'name': 'Node 3',
   'val': 3,
   'left': null,
   'right': null,
 };
 var node2 = {
+  'name': 'Node 2',
   'val': 2,
-  'left': node3,
+  'left': node4,
   'right': null,
 };
 
 var node1 = {
+  'name': 'Node 1',
   'val': 1,
-  'left': null,
-  'right': node2,
+  'left': node2,
+  'right': node3,
 }
 
 
 const result = [];
-const dfs = (node, res) => {
-  if (node.val != null || node.val != undefined) {
-    res.push(node.val)
+const dfs = (node, target) => {
+  console.log('NODE: ', node.name);
+  if (node.val == target) {
+    return node.val
+    // return node.val
   }
-  
   const left = node.left;
   const right = node.right; 
 
   if (left != null) {
-  dfs(node.left, res)
+   return dfs(node.left, target)
   }
   
   if (right != null) {
-    dfs(node.right, res)
+     return dfs(node.right, target)
   }
 
 }
 
-dfs(node1, result)
-console.log(result);
+console.log(dfs(node1, 2));

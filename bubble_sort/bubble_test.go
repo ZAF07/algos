@@ -41,8 +41,8 @@ func TestBubbleSort(t *testing.T) { // Run 'go test <path> -test.v' to see logs 
 func Bubble(arr []int) []int {
 	// outer pass goes through the entire length of the array
 	for i := 0; i < len(arr); i++ {
-		// inner pass goes through the entire length of the array as well
-		for j := 0; j < len(arr)-1-i; j++ { // We always decrease the inner loop by i so that we dont visit the last element in each pass. Because we already know that after each pass, the largest element will be pushed to the back of the slice
+		// inner pass goes through the entire length of the array as well -i -1
+		for j := 0; j < len(arr)-1-i; j++ { // We always decrease the inner loop by i so that we dont visit the last element in each pass. Because we already know that after each pass, the largest element encountered will be pushed to the back of the slice
 			// check if current array element is larger then the element right next to it
 			if arr[j] > arr[j+1] {
 				// if so, swap the current element with the element right next to it

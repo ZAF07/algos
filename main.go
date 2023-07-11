@@ -19,8 +19,10 @@ func minimumSizeSubarray(nums []int, target int) int {
 	for window < len(nums)-1 {
 		currentMin := getSum(nums[0 : 0+window]...)
 		fmt.Println("currentmin : ", currentMin)
-		if currentMin == target && window < min {
-			min = window
+		if currentMin == target {
+			if min == 0 {
+				min = window
+			}
 		}
 
 		for i := 1; i <= len(nums)-window; i++ {

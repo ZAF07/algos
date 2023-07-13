@@ -97,3 +97,10 @@ go-minimum-size-subarray-sum:
 	else\
 		go test sliding-window/minimum_size_subarray_sum_test.go;\
 	fi
+
+go-merge-sort:
+	@if [ $V = "TRUE" ]; then\
+		go test merge-sort/merge_sort_test.go -test.v;\
+	else\
+		go test merge-sort/merge_sort_test.go;\
+	fi

@@ -66,7 +66,7 @@ func longestSubstring(s string) int {
 	for right < len(s) {
 		// So if we have seen the letter before, we first check if it is currently before of after the left pointer
 		// If it is AFTER or IS the current left pointer, we simply shift the left pointer one letter after the seen letter and continue with the loop
-		// We don't have to do anything else here. The next iteration will recheck the same conditions and calculate the length of the new window if there are no repeating letters
+		// We don't have to do anything else here. The right pointer will not increment as well. Only the left pointer in this case. The next iteration will recheck the same conditions and calculate the length of the new window if there are no repeating letters
 		if location, seen := seenMap[s[right]]; seen {
 			if location >= left {
 				left = location + 1

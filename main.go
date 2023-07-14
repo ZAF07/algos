@@ -1,64 +1,67 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 // Package main is for quick testing of written code without the Go Test package
 
 func main() {
-	nums := []int{1}
-	// res := merge_sort(nums, "start")
-	// fmt.Println(res)
 
-	nums2 := []int{1, 8}
-	r := sort(nums, nums2, "start")
-	fmt.Println(r)
+	s := "bascfgtb"
+	res := aa(s)
+	fmt.Println(res)
 }
 
-func merge_sort(nums []int, location string) []int { // >> ms(3,2, 1,5) > ms(3,2) >> ms(3) ms(2) > s([3],[2])  ms(5,1) >> ms(5) ms(1) > s([5].[1])
-	fmt.Println("1️⃣: ", nums, location)
-	if len(nums) < 2 {
-		return nums
+func maxLenSubarray(s string) int {
+
+	if s == "" {
+		return 0
 	}
+	left, right := 0, 0
+	maxLen := 0
+	seenMap := make(map[byte]int)
 
-	// Get the midpoint of the array
-	mid := len(nums) / 2
-
-	fmt.Println("Calling sort with : ", nums[:mid], nums[mid:], location)
-	// Recursively sort the halved array
-	return sort(merge_sort(nums[:mid], "left"), merge_sort(nums[mid:], "right"), location)
-}
-
-// Result: [2, 3, 5, 1]
-//
-//	l  r
-//
-// [2,3], [5,1]
-func sort(left, right []int, location string) []int {
-	fmt.Println("2️⃣✅ In sort: ", left, right, location)
-	result := []int{}
-	lIndex, rIndex := 0, 0
-	// 0 < 4
-	for len(result) < len(left)+len(right) {
-		// If left element <= right element, append element to result and increase left index
-		if left[lIndex] <= right[rIndex] {
-			result = append(result, left[lIndex])
-			lIndex++
+	for right < len(s) {
+		// If we've seen this letter & it is somewhere behind the left pointer (meaning that it is not included in the current window) we simply calculate the current window length and expand the window again
+		if location, seen := seenMap[s[right]]; !seen {
+			seenMap[s[right]] = right
 		} else {
-			// This means that the right element is < left element. Append right element to result
-			result = append(result, right[rIndex])
-			rIndex++
+			// If last seen letter comes after the current left pointer (meaning that the current window includes the last seen letter on the right pointer AND somewhere in the window) we simply push left pointer to the last seen position and continue sliding the window
+			if location >= left {
+				// We +1 here because we know that the right pointer of the window is == the seen letter "aaba"
+				//  l s   r
+				// "a a b a "
+				left = location + 1
+				continue
+			}
+			seenMap[s[right]] = right // We update the location of the current seen letter
 		}
-
-		if rIndex == len(right) {
-			result = append(result, left[lIndex:]...)
-			break
-		}
-
-		if lIndex == len(left) {
-			result = append(result, right[rIndex:]...)
-			break
-		}
+		subLen := right - left + 1
+		maxLen = int(math.Max(float64(subLen), float64(maxLen)))
+		right++
 	}
-	fmt.Println("3️⃣👍: ", result)
-	return result
+	return maxLen
+}
+
+func aa(s string) int {
+	left, right := 0, 0
+	maxLen := 0
+	seenMap := make(map[byte]int)
+
+	for right < len(s) {
+		if location, seen := seenMap[s[right]]; seen {
+			if location >= left {
+				left = location + 1
+				continue
+			}
+		}
+
+		seenMap[s[right]] = right // We update the location of the current seen letter
+		subLen := right - left + 1
+		maxLen = int(math.Max(float64(subLen), float64(maxLen)))
+		right++
+	}
+	return maxLen
 }

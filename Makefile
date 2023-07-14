@@ -104,3 +104,10 @@ go-merge-sort:
 	else\
 		go test merge-sort/merge_sort_test.go;\
 	fi
+
+go-longest-substring-without-repeating-letters:
+	@if [ $V = "TRUE" ]; then\
+		go test sliding-window/longest_substring_without_repeating_letters_test.go -test.v;\
+	else\
+		go test sliding-window/longest_substring_without_repeating_letters_test.go;\
+	fi

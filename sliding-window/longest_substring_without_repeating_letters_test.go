@@ -42,6 +42,7 @@ func TestLongestSubString(t *testing.T) {
 		{"aabbab!a", 3},
 		{"aababcd", 4},
 		{"aba", 2},
+		{"aa", 1},
 		{"a", 1},
 		{"", 0},
 	}

@@ -45,6 +45,7 @@ func maxLenSubarray(s string) int {
 	return maxLen
 }
 
+// abcabcdas
 func aa(s string) int {
 	left, right := 0, 0
 	maxLen := 0

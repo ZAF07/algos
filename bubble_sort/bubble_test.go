@@ -14,6 +14,9 @@ import (
 	Input: [5,2,4,1,3]
 	Output: [1,2,3,4,5]
 	Solution: Sort the given array in ascending order
+
+	NOTE: Runtime BigO of O(n2). Loops again inside of the outer loop
+		On smaller arrays, Bubble Sort will be a better option than say Merge Sort as it does not merge/create new arrays. it simply alters the array in place
 */
 
 func TestBubbleSort(t *testing.T) { // Run 'go test <path> -test.v' to see logs in stdout

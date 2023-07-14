@@ -56,18 +56,25 @@ func TestLongestSubString(t *testing.T) {
 }
 
 func longestSubstring(s string) int {
+	// Two pointers representing the size of the current window
 	left, right := 0, 0
 	maxLen := 0
+	// Map to store letters we have seen
 	seenMap := make(map[byte]int)
 
+	// Loop the entire string
 	for right < len(s) {
+		// So if we have seen the letter before, we first check if it is currently before of after the left pointer
+		// If it is AFTER or IS the current left pointer, we simply shift the left pointer one letter after the seen letter and continue with the loop
+		// We don't have to do anything else here. The next iteration will recheck the same conditions and calculate the length of the new window if there are no repeating letters
 		if location, seen := seenMap[s[right]]; seen {
 			if location >= left {
 				left = location + 1
 				continue
 			}
 		}
-
+		// Regardless of whether we have seen the letter or not, we update the seen map with the position of the current letter
+		// We then calculate the length of the current window and increment the right pointer by one
 		seenMap[s[right]] = right // We update the location of the current seen letter
 		subLen := right - left + 1
 		maxLen = int(math.Max(float64(subLen), float64(maxLen)))

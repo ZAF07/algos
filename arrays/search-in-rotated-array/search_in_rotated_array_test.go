@@ -126,5 +126,6 @@ func findPivot(nums []int) int {
 		}
 	}
 
-	return left
+	// Returning either left or right pointer will still work. Both left and right will end up at the smallest element
+	return right
 }

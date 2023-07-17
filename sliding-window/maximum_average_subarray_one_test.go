@@ -2,6 +2,7 @@ package slidingwindow
 
 import (
 	"fmt"
+	"math"
 	"testing"
 
 	"gopkg.in/go-playground/assert.v1"
@@ -46,33 +47,31 @@ func TestMaximumAverageSubarrayOne(t *testing.T) {
 	}
 }
 
-func maxAvgSum(nums []int, k int) int {
-	// Return early if the length of the array is the same as k
-	if len(nums) == 1 && k == 1 {
-		return nums[0]
+func maxAvgSum(nums []int, k int) float64 {
+	// Return early if nums has only one element
+	if len(nums) < 2 && k == 1 {
+		return float64(nums[0])
 	}
+	// This is something i have to check. I don't quite understand this. Everyting does not work if i don't init sum this way
+	sum := float64(-1 << 63)
+	cSum := float64(0)
+	left, right := 0, 0
+	// Loop len(nums) times to capture all possible window size
+	for right <= len(nums)-1 {
+		// We keep adding to the result the value of the right (Window grows to the right)
+		cSum += float64(nums[right])
 
-	var maxSum int
-	// Get the first k elements in the nums array and calculate the sum
-	maxSum = getSum(nums[0:k]...)
-
-	// Loop Kx lesser than the the len of the array, bnecause we are including Kx elements after nums[i] so we don't go out of range
-	for i := 1; i <= len(nums)-k; i++ {
-		// Get the sum of the current window
-		tempSum := getSum(nums[i : i+k]...)
-		// Compare the sum of the current window to the current max sum. Replace max sum if current sum is larger (or smaller, depending on the goal)
-		if tempSum > maxSum {
-			maxSum = tempSum
+		// Here we check if the size of the window is == k && that the right pointer is still in range (within the length of the array)
+		// This means that we have reached a valid window size and have to calculate the sum of the current window
+		cLen := (right - left) + 1
+		if cLen == k && right <= len(nums)-1 {
+			sum = math.Max(cSum, sum)
+			// We substract the left element from the sum here (we are sliding the window of size k to the right side. So we have to remove the left most element first)
+			cSum -= float64(nums[left])
+			left++
 		}
-
+		// At the end of each pass, we always add one to the right pointer to keep moving the sliding window. We only adjust the left pointer when the window has reached it max size
+		right++
 	}
-	return maxSum
-}
-
-func getSum(i ...int) int {
-	var result int
-	for _, v := range i {
-		result += v
-	}
-	return result
+	return (sum / float64(k))
 }

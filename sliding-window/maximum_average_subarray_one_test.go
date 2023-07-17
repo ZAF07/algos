@@ -53,6 +53,7 @@ func maxAvgSum(nums []int, k int) float64 {
 		return float64(nums[0])
 	}
 	// This is something i have to check. I don't quite understand this. Everyting does not work if i don't init sum this way
+	// Something to do with bitwise operator
 	sum := float64(-1 << 63)
 	cSum := float64(0)
 	left, right := 0, 0

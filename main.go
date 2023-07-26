@@ -5,10 +5,17 @@ import "fmt"
 // Package main is for quick testing of written code without the Go Test package
 
 func main() {
+<<<<<<< HEAD
 	// nums := []int{1, 5, 2, 4, 3}
 	// target := 9
 	// res := TwoSum(nums, target)
 	// fmt.Println(res)
+=======
+	nums := []int{0, 3, 4, 3, 4, 5, 1, 6}
+	target := 6
+	res := TwoSumAdjust2(nums, target)
+	fmt.Println(res)
+>>>>>>> 8f58bf2 (added two sum with array of numbers (not index) as result)
 
 	// bub := Bubble(nums)
 	// fmt.Println(bub)
@@ -17,6 +24,7 @@ func main() {
 	// bTarget := 2
 	// bin := BinaryS(bNums, bTarget)
 	// fmt.Println(bin)
+<<<<<<< HEAD
 
 	// nums := []int{4, 5, 6, 0, 1, 2}
 	// res := rBinary(nums, 0)
@@ -25,6 +33,8 @@ func main() {
 	rNums := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 3, 4}
 	resr := removeDups(rNums)
 	fmt.Println("REMOVE DUPS: ", resr)
+=======
+>>>>>>> 8f58bf2 (added two sum with array of numbers (not index) as result)
 }
 
 func TwoSum(nums []int, target int) []int {
@@ -38,6 +48,55 @@ func TwoSum(nums []int, target int) []int {
 
 		pair[target-nums[i]] = i
 	}
+	return res
+}
+
+// THIS IS THE CORRECT ONE SO FAR
+func TwoSumAdjust(nums []int, target int) [][]int {
+	res := [][]int{}
+	seenMap := make(map[int]int)
+
+	for i, v := range nums {
+		missingNum := target - v
+		if val, seen := seenMap[v]; seen {
+			if val == -1 {
+				continue
+			}
+			res = append(res, []int{v, nums[val]})
+			seenMap[v] = -1
+			continue
+		} else {
+
+			if _, ok := seenMap[missingNum]; ok {
+				continue
+			}
+			seenMap[target-v] = i
+		}
+	}
+	return res
+}
+
+// 4:t
+// v
+// 3,  4 , 3  ,4
+func TwoSumAdjust2(nums []int, target int) [][]int {
+	res := [][]int{}
+	seenMap := make(map[int]bool)
+
+	for _, num := range nums {
+		missingNum := target - num
+
+		// Check if the missingNum is already in the seenMap,
+		// and ensure that the pair doesn't contain duplicate elements.
+		if seenMap[num] {
+			if !seenMap[missingNum] {
+				pair := []int{num, missingNum}
+				res = append(res, pair)
+			}
+		}
+		seenMap[missingNum] = true
+	}
+
 	return res
 }
 

@@ -7,11 +7,25 @@ go-two-sum:
 		go test two-sum/two_sum_test.go;\
   fi
 
-go-palindrome:
+go-palindrome-int:
 	@if [ $V = "TRUE" ]; then\
-		go test palindrome/palindrome_test.go -test.v;\
+		go test palindrome/palindrome_integers_test.go -test.v;\
 	else\
-		go test palindrome/palindrome_test.go;\
+		go test palindrome/palindrome_integers_test.go;\
+  fi
+
+go-longest-palindrome-manacher:
+	@if [ $V = "TRUE" ]; then\
+		go test palindrome/longest_palindrome_manacher_test.go -test.v;\
+	else\
+		go test palindrome/longest_palindrome_manacher_test.go;\
+  fi
+
+go-longest-palindrome:
+	@if [ $V = "TRUE" ]; then\
+		go test palindrome/longest_palindrome_test.go -test.v;\
+	else\
+		go test palindrome/longest_palindrome_test.go;\
   fi
 
 go-bubble-sort:

@@ -1,56 +1,33 @@
-package main
+package palindrome
 
 import (
 	"fmt"
+	"testing"
+
+	"gopkg.in/go-playground/assert.v1"
 )
 
-func main() {
-	s := "anna"
-	res := LongestPalindrome2(s)
-	fmt.Println("Result: ", res)
-
-}
-
-/*
-Basic approach. O(n^2) (O of n squared)
-
-Not very optimal because we are looping twice here.
-The outer loop loops the string once, while the inner loop does the exact same, checking if the string is a palindrome by expanding to the right only
-*/
-func LongestPalindrome(s string) string {
-	// Edge case
-	if len(s) < 2 {
-		return s
+func TestLongestPalindromeOptimised(t *testing.T) {
+	tests := []struct {
+		s    string
+		want string
+	}{
+		{"anna", "anna"},
+		{"xanna", "anna"},
+		{"babba", "abba"},
+		{"xsbabxr", "bab"},
+		{"ac", "a"},
+		{"a", "a"},
 	}
-	var result string
-	// Outer loop, Left pointer starts at the current position
-	for i := 0; i < len(s); i++ {
-		r := i
 
-		// Inner loop, Right pointer starts at the current pointer as well. Inefficient...
-		for i >= 0 && r < len(s) {
-			currentStrLength := (r - i) + 1
-			if isPalindrome(s[i : r+1]) {
-				if currentStrLength > len(result) {
-					result = s[i : r+1]
-				}
-			}
-			r++
-		}
-	}
-	return result
-}
+	for _, tt := range tests {
+		testName := fmt.Sprintf("Given: %v, Want: %v", tt.s, tt.want)
 
-func isPalindrome(s string) bool {
-	l, r := 0, len(s)-1
-	for l < r {
-		if s[l] != s[r] {
-			return false
-		}
-		l++
-		r--
+		t.Run(testName, func(t *testing.T) {
+			got := LongestPalindromeManacher(tt.s)
+			assert.Equal(t, tt.want, got)
+		})
 	}
-	return true
 }
 
 /*
@@ -59,7 +36,7 @@ Manacher's algprithm 0(n) time complexity
 This is a very efficient algoritum for solving the Longest palindrome in a substring proplem
 Because we are only iterating the string once and expanding the left and right pointers in constant time, this makes it a very efficient algorithm for this probelem
 */
-func LongestPalindrome2(s string) string {
+func LongestPalindromeManacher(s string) string {
 	// Edge case for when there is only one character in the string
 	if len(s) < 2 {
 		return s

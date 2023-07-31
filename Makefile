@@ -14,6 +14,14 @@ go-palindrome-int:
 		go test palindrome/palindrome_integers_test.go;\
   fi
 
+
+go-palindrome-string:
+	@if [ $V = "TRUE" ]; then\
+		go test palindrome/palindrome_string_test.go -test.v;\
+	else\
+		go test palindrome/palindrome_string_test.go;\
+  fi
+
 go-longest-palindrome-manacher:
 	@if [ $V = "TRUE" ]; then\
 		go test palindrome/longest_palindrome_manacher_test.go -test.v;\

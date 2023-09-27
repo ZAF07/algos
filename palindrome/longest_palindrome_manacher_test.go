@@ -52,7 +52,7 @@ func TestLongestPalindromeOptimised(t *testing.T) {
 Manacher's algprithm 0(n) time complexity
 
 This is a very efficient algoritum for solving the Longest palindrome in a substring proplem
-Because we are only iterating the string once and expanding the left and right pointers in constant time, this makes it a very efficient algorithm for this probelem
+Because we are only iterating the string once and expanding the left and right pointers in constant time, this makes it a very efficient algorithm for this problem
 */
 func LongestPalindromeManacher(s string) string {
 	// Edge case for when there is only one character in the string

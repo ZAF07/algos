@@ -68,7 +68,7 @@ func LongestPalindromeManacher(s string) string {
 		l, r := i, i
 
 		// Here we check that l>=0 (so that we don't go past the starting character of the string) and that r<= len(s) (so that we don't go past the last character of the string)
-		// Also we are continuing with the inner loop as long as we find that both s[l] && s[r] are the same characters. Tat means theay are in fact palindromes
+		// Also we are continuing with the inner loop as long as we find that both s[l] && s[r] are the same characters. That means theay are in fact palindromes
 		// As long as s[l] == s[r], we keep expanding
 		for l >= 0 && r < len(s) && s[l] == s[r] {
 			// Since we are looking for the longest palindrome substring, we only change the result if the length of the current palindrome is larger than the palindrome in the current result

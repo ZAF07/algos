@@ -83,7 +83,7 @@ func LongestPalindromeManacher(s string) string {
 		l, r = i, i+1
 
 		// Make sure not to go past the start and end of the string
-		// Continue the loop only if s[l] == s[r]
+		// Continue the loop only if s[l] == s[r] && that the two pointers does not go past the length of the given letter
 		// If s[l] == s[r], we check if the length of the current palindrome is larger than the current result (we are looking for the longest palindrome in the substring)
 		for l >= 0 && r < len(s) && s[l] == s[r] {
 			if (r-l)+1 > len(result) {

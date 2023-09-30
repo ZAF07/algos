@@ -89,12 +89,12 @@ func sort(left, right []int) []int {
 		// If left element is smaller than or equal to the right, we simply append the smaller element (left in this case)
 		if left[l] <= right[r] {
 			result = append(result, left[l])
-			// Increase the value of the index/pointer of the smaller element
+			// Increase the value of the index/pointer of the slice with the smaller element
 			l++
 		} else {
 			// Else we append the right element as it is smaller than the left element
 			result = append(result, right[r])
-			// Increase the value of the index/pointer of the smaller element
+			// Increase the value of the index/pointer of the slice with the smaller element
 			r++
 		}
 		// If any of the two index/pointer is == to its array size, we know that anything that comes after is going to be larger, so just append the remaining elements to the result array

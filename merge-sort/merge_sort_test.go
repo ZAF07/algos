@@ -36,6 +36,7 @@ func TestMergeSort(t *testing.T) {
 		want []int
 	}{
 		{[]int{5, 3, 4, 1, 2}, []int{1, 2, 3, 4, 5}},
+		{[]int{5, 2, 3, 4}, []int{2, 3, 4, 5}},
 	}
 	for _, tt := range tests {
 		testName := fmt.Sprintf("Given %v, Want: %v", tt.nums, tt.want)

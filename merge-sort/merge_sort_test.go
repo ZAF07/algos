@@ -97,7 +97,7 @@ func sort(left, right []int) []int {
 			// Increase the value of the index/pointer of the slice with the smaller element
 			r++
 		}
-		// If any of the two index/pointer is == to its array size, we know that anything that comes after is going to be larger, so just append the remaining elements to the result array
+		// If any of the two index/pointer is == to its array size (meaning that we have reached the end of one side of the two arrays), we know that anything that comes after is going to be larger, so just append the remaining elements to the result array
 		if l == len(left) {
 			result = append(result, right[r:]...)
 			break

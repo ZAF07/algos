@@ -42,7 +42,7 @@ func TestMajorityElement(t *testing.T) {
 	}
 }
 
-//  Linear time, O(1) space
+// Linear time, O(n) space beacuse the space for the hash table grows with the number of input
 func MajorityElement(nums []int) int {
 	var result int
 	var count int // Store the highest number of appearence for the end loop

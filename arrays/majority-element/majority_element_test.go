@@ -63,23 +63,3 @@ func MajorityElement(nums []int) int {
 
 	return result
 }
-
-// Boyer-Moore Voting Algorithm Implementation...
-func majorityElement(nums []int) int {
-	count := 1
-	candidate := nums[0]
-
-	for i := 1; i < len(nums); i++ {
-		if nums[i] == candidate {
-			count++
-		} else {
-			count--
-		}
-
-		if count == 0 {
-			candidate = nums[i]
-			count = 1
-		}
-	}
-	return candidate
-}

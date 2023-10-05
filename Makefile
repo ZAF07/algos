@@ -133,3 +133,11 @@ go-longest-substring-without-repeating-letters:
 	else\
 		go test sliding-window/longest_substring_without_repeating_letters_test.go;\
 	fi
+
+
+go-single-number:
+	@if [ $V = "TRUE" ]; then\
+		go test arrays/single-number/single_number_test.go -test.v;\
+	else\
+		go test arrays/single-number/single_number_test.go;\
+	fi

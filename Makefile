@@ -155,3 +155,10 @@ go-valid-palindrome:
 	else\
 		go test palindrome/valid_palindrome_test.go;\
 	fi
+
+go-max-subarray-sum:
+	@if [ $V = "TRUE" ]; then\
+		go test max-sub-array-sum/max_subarray_sum_test.go -test.v;\
+	else\
+		go test max-sub-array-sum/max_subarray_sum_test.go;\
+	fi

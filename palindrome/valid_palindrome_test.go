@@ -60,13 +60,13 @@ func validPalindrome(s string) bool {
 
 	for l <= r {
 
-		// Check if left is a alphanumeric character
+		// Check if left is an alpha-numeric character
 		for l < r && !unicode.IsLetter(rune(s[l])) && !unicode.IsNumber(rune(s[l])) {
 			// Move left pointer up one position
 			l++
 		}
 
-		// Check if right is a alphanumeric character
+		// Check if right is an alpha-numeric character
 		for l < r && !unicode.IsLetter(rune(s[r])) && !unicode.IsNumber(rune(s[r])) {
 			// Move right pointer down one position
 			r--

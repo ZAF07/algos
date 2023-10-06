@@ -148,3 +148,10 @@ go-single-number:
 	else\
 		go test arrays/single-number/single_number_test.go;\
 	fi
+
+go-valid-palindrome:
+	@if [ $V = "TRUE" ]; then\
+		go test palindrome/valid_palindrome_test.go -test.v;\
+	else\
+		go test palindrome/valid_palindrome_test.go;\
+	fi

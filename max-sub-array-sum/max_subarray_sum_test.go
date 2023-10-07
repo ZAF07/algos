@@ -12,6 +12,32 @@ import (
 
 // // 🚨 NOT COMPLETE. GO SEARCH FOR THE ANSWERS
 
+/* 53 Maximun Subarray
+Given an integer array nums, find the
+subarray with the largest sum, and return its sum.
+
+Example 1:
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+
+Example 2:
+Input: nums = [1]
+Output: 1
+Explanation: The subarray [1] has the largest sum 1.
+
+Example 3:
+Input: nums = [5,4,-1,7,8]
+Output: 23
+Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
+
+Constraints:
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
+
+Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+*/
+
 func TestMaxSubArray(t *testing.T) {
 	tests := []struct {
 		input []int
@@ -19,6 +45,10 @@ func TestMaxSubArray(t *testing.T) {
 	}{
 		{[]int{2, -3, 4, -2, 2, 5}, 9},
 		{[]int{4, -3, 4, -2, 2, -6, 1}, 5},
+		{[]int{-2, 1, -3, 4, -1, 2, 1, -5, 4}, 6},
+		{[]int{10, 9, 1, -21, 20, -2}, 20},
+		{[]int{-3, -2, 0, -1}, 0},
+		{[]int{-2, -1}, -1},
 	}
 
 	for _, tt := range tests {
@@ -31,14 +61,19 @@ func TestMaxSubArray(t *testing.T) {
 }
 
 func maxSubArraySum(nums []int) int {
-	cur := 0
-	max := nums[0]
-
+	// If there is only one integer in the input, we simply return it
 	if len(nums) == 1 {
 		return nums[0]
 	}
 
+	// Variable to store the current subarray's sum
+	cur := 0
+
+	// Variable to store the max subarray's sum
+	max := nums[0]
+
 	for _, n := range nums {
+		// If cur < 0 means that we have reached the end of a possible subarray. Meaning that we started somewhere in the array up until this point where current has become a negative numnber
 		if cur < 0 {
 			cur = 0
 		}

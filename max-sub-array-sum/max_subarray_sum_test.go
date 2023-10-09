@@ -78,6 +78,7 @@ func maxSubArraySum(nums []int) int {
 			cur = 0
 		}
 
+		// add to current sum and set the maximum value to the result
 		cur += n
 		max = int(math.Max(float64(max), float64(cur)))
 	}

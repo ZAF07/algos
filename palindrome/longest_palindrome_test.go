@@ -50,7 +50,7 @@ func TestLongestPalindrome(t *testing.T) {
 }
 
 /*
-Basic approach. O(n^2) (O of n squared)
+Basic approach. O(n^2) (O of n squared) (See palindrome/longest_palindrome_manacher_test.go for an optimised solution)
 
 Not very optimal because we are looping twice here.
 The outer loop loops the string once, while the inner loop does the exact same, checking if the string is a palindrome by expanding to the right only

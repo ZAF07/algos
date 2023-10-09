@@ -73,7 +73,7 @@ func maxSubArraySum(nums []int) int {
 	max := nums[0]
 
 	for _, n := range nums {
-		// If cur < 0 means that we have reached the end of a possible subarray. Meaning that we started somewhere in the array up until this point where current has become a negative numnber
+		// If cur < 0 means that we have reached the end of a possible subarray. Meaning that we started somewhere in the array up until this point where current has become a negative number
 		if cur < 0 {
 			cur = 0
 		}

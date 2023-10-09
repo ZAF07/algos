@@ -34,7 +34,7 @@ Constraints:
 s consists of English letters, digits, symbols and spaces.
 */
 
-func TestLongestSubString(t *testing.T) {
+func TestLongestSubStringWithoutRepeatingLetters(t *testing.T) {
 	tests := []struct {
 		s    string
 		want int

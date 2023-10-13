@@ -84,6 +84,13 @@ go-count-negative:
 	else\
 		go test arrays/count-negative-numbers-in-array/count_negative_test.go;\
   fi
+
+go-count-negative_two:
+	@if [ $V = "TRUE" ]; then\
+		go test arrays/count-negative-numbers-in-array/count_negative_two_test.go -test.v;\
+	else\
+		go test arrays/count-negative-numbers-in-array/count_negative_two_test.go;\
+  fi
 	
 go-best-time-to-buy:
 	@if [ $V = "TRUE" ]; then\

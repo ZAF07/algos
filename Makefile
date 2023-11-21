@@ -50,6 +50,13 @@ go-binary-search:
 		go test binary-search/binary_search_test.go;\
   fi
 
+go-first-and-last-position:
+	@if [ $V = "TRUE" ]; then\
+		go test binary-search/first_and_last_position.go -test.v;\
+	else\
+		go test binary-search/first_and_last_position_test.go;\
+  fi
+
 go-top-k-frequent-nums:
 	@if [ $V = "TRUE" ]; then\
 		go test arrays/top-k-frequent-nums/top_k_frequent_nums_test.go -test.v;\

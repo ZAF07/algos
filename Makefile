@@ -105,6 +105,14 @@ go-best-time-to-buy:
 	else\
 		go test arrays/best-time-to-buy-sell-stocks/best_time_to_buy_test.go;\
   fi
+  
+go-best-time-to-buy-sell-stock-2:
+	@if [ $V = "TRUE" ]; then\
+		go test dynamic-programming/best_time_buy_sell_stock_2_test.go -test.v;\
+	else\
+		go test dynamic-programming/best_time_buy_sell_stock_2_test.go;\
+  fi
+
 
 go-majority-element:
 	@if [ $V == "TRUE" ]; then\

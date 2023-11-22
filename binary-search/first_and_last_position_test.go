@@ -109,6 +109,15 @@ func fnl2(nums []int, target int) []int {
 	return []int{start, end}
 }
 
+/*
+Modified binary search.
+
+We basically perform a regular binary search.
+
+Difference with this version is that when we find the target value, we keep the pointers moving (direction depends on whether we're looking for the first or last instance of the target value)
+
+Eventually, left pointer will go past the right pointer, which is when the binary search terminates.
+*/
 func findTarget(nums []int, target int, findMin bool) int {
 	l, r := 0, len(nums)-1
 	idx := -1

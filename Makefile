@@ -184,3 +184,10 @@ go-max-subarray-sum:
 	else\
 		go test max-sub-array-sum/max_subarray_sum_test.go;\
 	fi
+
+go-min-amt-time-collect-garbage:
+	@if [ $V = "TRUE" ]; then\
+		go test arrays/minimum-amount-of-time-to-collect-garbage/min_amt_time_collect_garbage_test.go -test.v;\
+	else\
+		go test arrays/minimum-amount-of-time-to-collect-garbage/min_amt_time_collect_garbage_test.go;\
+	fi

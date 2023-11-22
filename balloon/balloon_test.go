@@ -45,9 +45,9 @@ func balloon(str string) int {
 	}
 
 	var res int
-
 	count := make(map[byte]int)
 
+	// Add each character from the string into a map
 	for i := 0; i < len(str); i++ {
 		if _, seen := count[str[i]]; !seen {
 			count[str[i]] = 1
@@ -56,6 +56,7 @@ func balloon(str string) int {
 		}
 	}
 
+	// The minimum numbers of times the each charactere appears is the max number of times we can remove letters to make BALLOON
 	res = count['B']
 	res = int(math.Min(float64(count['A']), float64(res)))
 	res = int(math.Min(float64(count['L']/2), float64(res)))

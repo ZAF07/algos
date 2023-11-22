@@ -37,6 +37,7 @@ Constraints:
 
 /*
 	Solution in text
+	This uses the Iterative bottom-up DP approach
 
 	First we init two DS to store both the values of the sell and buy
 	EG. When we buy today, how much would we earn and same for the sell
@@ -70,7 +71,6 @@ func TestBestTimeToBuyAndSellStocks(t *testing.T) {
 	}
 }
 
-// 7,1,4,5,2,10
 func maxProfit(prices []int) int {
 	stocks := len(prices)
 	if stocks <= 1 {

@@ -191,3 +191,10 @@ go-min-amt-time-collect-garbage:
 	else\
 		go test arrays/minimum-amount-of-time-to-collect-garbage/min_amt_time_collect_garbage_test.go;\
 	fi
+
+go-balloon:
+	@if [ $V = "TRUE" ]; then\
+		go test balloon/balloon_test.go -test.v;\
+	else\
+		go test balloon/balloon_test.go;\
+	fi

@@ -198,3 +198,10 @@ go-balloon:
 	else\
 		go test balloon/balloon_test.go;\
 	fi
+
+go-spiral-matrix:
+	@if [ $V = "TRUE" ]; then\
+		go test arrays/spiral-matrix/spiral_matrix_test.go -test.v;\
+	else\
+		go test arrays/spiral-matrix/spiral_matrix_test.go;\
+	fi

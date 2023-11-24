@@ -205,3 +205,10 @@ go-spiral-matrix:
 	else\
 		go test arrays/spiral-matrix/spiral_matrix_test.go;\
 	fi
+
+go-three-sum:
+	@if [ $V = "TRUE" ]; then\
+		go test three-sum/three_sum_test.go -test.v;\
+	else\
+		go test three-sum/three_sum_test.go;\
+	fi

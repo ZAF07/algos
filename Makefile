@@ -7,6 +7,13 @@ go-two-sum:
 		go test two-sum/two_sum_test.go;\
   fi
 
+go-two-sum-two:
+	@if [ $V = "TRUE" ]; then\
+		go test two-sum-two/two_sum_two_test.go -test.v;\
+	else\
+		go test two-sum-two/two_sum_two_test.go;\
+	fi
+
 go-palindrome-int:
 	@if [ $V = "TRUE" ]; then\
 		go test palindrome/palindrome_integers_test.go -test.v;\
@@ -212,3 +219,5 @@ go-three-sum:
 	else\
 		go test three-sum/three_sum_test.go;\
 	fi
+
+			return []int{l + 1, r + 1}

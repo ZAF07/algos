@@ -10,7 +10,9 @@ import (
 
 /*
  Taken from Codility
-	Given a string, find how many times you can remove letters from the string to form a new word ("BALLOON"). Each time you remove letters from the given string, you can only remove 7 letters. If there is still enough letters left, the word "BALLOON" may still be found in the given string.
+	Given a string, find how many times you can remove letters from the string to form a new word ("BALLOON").
+	In one move you can only remove 7 letters from the given string
+	If there is still enough letters left, you may repeat the steps again.
 */
 
 func TestBalloon(t *testing.T) {

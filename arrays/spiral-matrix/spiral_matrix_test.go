@@ -84,6 +84,8 @@ func spiralMatrix(matrix [][]int) []int {
 		/*
 			💡 Inside this loop, before we loop for each direction, its condition should also include that the length of thre result is < matrix size
 			so that we could simply skip the step and quickly exit the loop once we hit the last element of the matrix
+
+			We also update left and right pointers accordingly before each direction because after each direction, the pointers would go out of bounds (condition for the loop to stop)
 		*/
 
 		// go right

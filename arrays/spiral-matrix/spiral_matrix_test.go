@@ -81,6 +81,11 @@ func spiralMatrix(matrix [][]int) []int {
 		// Start points for i & j index
 		i, j := cycle-1, cycle-1
 
+		/*
+			💡 Inside this loop, before we loop for each dorection, its condition should also include that the length of thre result is < matrix size
+			so that we could simply skip the step and quickly exit the loop once we hit the last element of the matrix
+		*/
+
 		// go right
 		for len(res) < matrixSize && i == cycle-1 && j <= len(matrix[i])-cycle {
 			res = append(res, matrix[i][j])

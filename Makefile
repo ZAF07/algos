@@ -220,4 +220,9 @@ go-three-sum:
 		go test three-sum/three_sum_test.go;\
 	fi
 
-			return []int{l + 1, r + 1}
+go-container-with-most-water:
+	@if [ $V = "TRUE" ]; then\
+		go test two-pointers/container_with_most_water_test.go -test.v;\
+	else\
+		go test two-pointers/container_with_most_water_test.go;\
+	fi

@@ -62,7 +62,7 @@ func maxArea(height []int) int {
 		// get the max width of the current container
 		width := (r - l)
 
-		// find the minimum height of the current container
+		// find the minimum height of the current container (minimum between the value at the left and right pointer)
 		curHeight := int(math.Min(float64(height[l]), float64(height[r])))
 
 		// calc the max amount of water the current container can hold (multiply the width by the min height of current container)

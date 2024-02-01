@@ -13,36 +13,6 @@ type Node struct {
 	Right *Node
 }
 
-// var rll = &Node{
-// 	Val:   1,
-// 	Left:  nil,
-// 	Right: nil,
-// }
-
-// var rlr = &Node{
-// 	Val:   6,
-// 	Left:  nil,
-// 	Right: nil,
-// }
-
-// var rl = &Node{
-// 	Val:   2,
-// 	Left:  rll,
-// 	Right: rlr,
-// }
-
-// var rr = &Node{
-// 	Val:   4,
-// 	Left:  rl,
-// 	Right: nil,
-// }
-
-// var rootNode = &Node{
-// 	Val:   3,
-// 	Left:  rl,
-// 	Right: rr,
-// }
-
 func TestDFS(t *testing.T) {
 	tests := []struct {
 		leftRange  int

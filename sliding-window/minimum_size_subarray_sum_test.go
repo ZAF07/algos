@@ -36,6 +36,7 @@ func TestMinSizeSubarraySum(t *testing.T) {
 		want   int
 	}{
 		{[]int{4, 2, 4, 3, 6}, 7, 2},
+		{[]int{4, 5, 6, 10, 4}, 9, 1},
 		{[]int{4, 2, 4, 3, 6}, 6, 1},
 		{[]int{1, 1, 1, 1, 1, 1}, 6, 6},
 		{[]int{1}, 6, 0},

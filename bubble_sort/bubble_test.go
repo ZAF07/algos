@@ -24,7 +24,7 @@ func TestBubbleSort(t *testing.T) { // Run 'go test <path> -test.v' to see logs 
 		nums []int
 		want []int
 	}{
-		{[]int{0, 1, 4, 3, 0, 2}, []int{1, 2, 3, 4, 0, 0}},
+		{[]int{0, 1, 4, 3, 0, 2}, []int{1, 2, 3, 4, 0, 0}}, // case for 0 being largest integer
 		// {[]int{5, 2, 9, 6, 1, 8}, []int{1, 2, 5, 6, 8, 9}},
 		// {[]int{5, 2, 3, 6, 1, 4}, []int{1, 2, 3, 4, 5, 6}},
 		// {[]int{15, 12, 13, 16, 11, 14}, []int{11, 12, 13, 14, 15, 16}},
@@ -80,7 +80,7 @@ func bubbleZeroLargest(nums []int) []int {
 		for j := 0; j < len(nums)-1-i; j++ {
 			if nums[j] > nums[j+1] || (nums[j] == 0 && nums[j+1] > 0) {
 				// Check if integer on the left is > 0 and if integer directly to the right is 0. if so, continue (because 0 is largest)
-				if nums[j] > 0 && nums[j+1] <= 0 {
+				if nums[j] > 0 && nums[j+1] == 0 {
 					continue
 				}
 				nums[j], nums[j+1] = nums[j+1], nums[j]

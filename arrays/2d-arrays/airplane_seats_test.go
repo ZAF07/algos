@@ -75,14 +75,14 @@ func calculateFamiliesInRow(n int, reserved string) int {
 		matched := seatRowPattern.FindStringSubmatch(r)
 
 		// get the offset unicode value of the row and seat by performing -'A' for alphabet || -'0' for integers
-		row, seat := int([]rune(matched[1])[0]-'0'), int([]rune(matched[2])[0]-'A')
+		row, seat := int([]rune(matched[1])[0]-'1'), int([]rune(matched[2])[0]-'A')
 
 		// because I is skipped in the seat sequence, we have to perform the check and subtract K by 1 position
 		if matched[2] == "K" {
 			seat--
 		}
 		// set the row and seat position to true in the 2d array representing the seats reserved
-		rows[row-1][seat] = true
+		rows[row][seat] = true
 	}
 
 	// iterate the row and cols and calculate how many family of 4 can fit into each row given the reserved seats

@@ -95,23 +95,9 @@ func calculateFamiliesInRow(n int, reserved string) int {
 		}
 
 		// middle only & no space for 4 on left and right
-		if canSit(row, 3, 6) && !canSit(row, 1, 4) && !canSit(row, 5, 8) {
+		if canSit(row, 3, 6) || canSit(row, 1, 4) || canSit(row, 5, 8) {
 			total++
-			fmt.Println("✅ middle only")
-			continue
-		}
-
-		// left most only, seperated by aisle & no space for 4 in the middle and right
-		if canSit(row, 1, 4) && !canSit(row, 5, 8) {
-			total++
-			fmt.Println("✅ left only")
-			continue
-		}
-
-		// right most, seperated by aisle & no space for 4 in the middle and left
-		if canSit(row, 5, 8) && !canSit(row, 1, 4) {
-			total++
-			fmt.Println("✅ right only")
+			fmt.Println("✅ left, right or middle")
 			continue
 		}
 	}

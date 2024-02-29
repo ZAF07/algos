@@ -226,3 +226,10 @@ go-container-with-most-water:
 	else\
 		go test two-pointers/container_with_most_water_test.go;\
 	fi
+
+go-smallest-positive-int:
+	@if [ $V = "TRUE" ]; then\
+		go test arrays/smallest-positive-integer/smallest_positive_integer_test.go -test.v;\
+	else\
+		go test arrays/smallest-positive-integer/smallest_positive_integer_test.go;\
+	fi

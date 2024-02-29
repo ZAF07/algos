@@ -233,3 +233,10 @@ go-smallest-positive-int:
 	else\
 		go test arrays/smallest-positive-integer/smallest_positive_integer_test.go;\
 	fi
+
+go-airplane-seats:
+	@if [ $V = "TRUE" ]; then\
+		go test arrays/2d-arrays/airplane_seats_test.go -test.v;\
+	else\
+		go test arrays/2d-arrays/airplane_seats_test.go;\
+	fi

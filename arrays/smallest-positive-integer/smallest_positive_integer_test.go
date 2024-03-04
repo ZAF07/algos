@@ -8,6 +8,14 @@ import (
 	"gopkg.in/go-playground/assert.v1"
 )
 
+/*
+	Given an array of integers ranging from negative to positive, return the smallest non-negative integer that does not appear in the array.
+
+	Example:
+
+	Given [-1,-2,4,2,3,5], Answer: 2
+*/
+
 func TestSmallestPoositiveInteger(t *testing.T) {
 	tests := []struct {
 		given []int

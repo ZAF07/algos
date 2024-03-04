@@ -111,12 +111,12 @@ func dfs(n *Node, l, r int) int {
 
 	//  if there is a Left node, recursively call the bfs func, simply repeating the above steps
 	if n.Left != nil {
-		sum += bfs(n.Left, l, r)
+		sum += dfs(n.Left, l, r)
 	}
 
 	//  if there is a Right node, recursively call the bfs func, simply repeating the above steps
 	if n.Right != nil {
-		sum += bfs(n.Right, l, r)
+		sum += dfs(n.Right, l, r)
 	}
 
 	return sum

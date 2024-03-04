@@ -101,7 +101,7 @@ Given a root node and left and right range, return the sum of the Binary Search 
 Example: Root: {val: 3, Left: Node, Right: Node}, Left: 1, Right: 3
 3 from Root node's value would be added to the sum because it falls between the Left and Right range (1-3)
 */
-func bfs(n *Node, l, r int) int {
+func dfs(n *Node, l, r int) int {
 	var sum int
 
 	// Check current node's val, add to sun if falls in range

@@ -13,6 +13,7 @@ func TestSmallestPoositiveInteger(t *testing.T) {
 		given []int
 		want  int
 	}{
+		{[]int{-1, -2, -3, 1}, 2},
 		{[]int{4, 3, 1, 5, -1}, 2},
 		{[]int{2, 6, 4, 7, 4}, 1},
 		{[]int{1, 2, 6, 4, 7, 4}, 3},

@@ -13,67 +13,22 @@ type Node struct {
 	Right *Node
 }
 
-func TestDFS(t *testing.T) {
-	tests := []struct {
-		leftRange  int
-		rightRange int
-		root       *Node
-		want       int
-	}{
-		{
-			leftRange:  1,
-			rightRange: 5,
-			root: &Node{ // Root
-				Val: 4,
+var dfsTests = []struct {
+	leftRange  int
+	rightRange int
+	root       *Node
+	want       int
+}{
+	{
+		leftRange:  1,
+		rightRange: 5,
+		root: &Node{ // Root
+			Val: 4,
+			Left: &Node{
+				Val: 3,
 				Left: &Node{
-					Val: 3,
-					Left: &Node{
-						Val:  2,
-						Left: nil,
-						Right: &Node{
-							Val:   7,
-							Left:  nil,
-							Right: nil,
-						},
-					},
-				},
-				Right: &Node{
-					Val:   6,
-					Left:  nil,
-					Right: nil,
-				},
-			},
-			want: 9,
-		},
-		{
-			leftRange:  4,
-			rightRange: 10,
-			root: &Node{ // Root
-				Val: 4,
-				Left: &Node{
-					Val: 3,
-					Left: &Node{
-						Val:  2,
-						Left: nil,
-						Right: &Node{
-							Val:   7,
-							Left:  nil,
-							Right: nil,
-						},
-					},
-					Right: &Node{
-						Val:   8,
-						Left:  nil,
-						Right: nil,
-					},
-				},
-				Right: &Node{
-					Val: 6,
-					Left: &Node{
-						Val:   5,
-						Left:  nil,
-						Right: nil,
-					},
+					Val:  2,
+					Left: nil,
 					Right: &Node{
 						Val:   7,
 						Left:  nil,
@@ -81,17 +36,81 @@ func TestDFS(t *testing.T) {
 					},
 				},
 			},
-			want: 37,
+			Right: &Node{
+				Val:   6,
+				Left:  nil,
+				Right: nil,
+			},
 		},
-	}
+		want: 9,
+	},
+	{
+		leftRange:  4,
+		rightRange: 10,
+		root: &Node{ // Root
+			Val: 4,
+			Left: &Node{
+				Val: 3,
+				Left: &Node{
+					Val:  2,
+					Left: nil,
+					Right: &Node{
+						Val:   7,
+						Left:  nil,
+						Right: nil,
+					},
+				},
+				Right: &Node{
+					Val:   8,
+					Left:  nil,
+					Right: nil,
+				},
+			},
+			Right: &Node{
+				Val: 6,
+				Left: &Node{
+					Val:   5,
+					Left:  nil,
+					Right: nil,
+				},
+				Right: &Node{
+					Val:   7,
+					Left:  nil,
+					Right: nil,
+				},
+			},
+		},
+		want: 37,
+	},
+}
 
-	for _, tt := range tests {
+func TestDFS(t *testing.T) {
+
+	for _, tt := range dfsTests {
 		name := fmt.Sprintf("Given: %v, || Want: %v", tt.root, tt.want)
 		t.Run(name, func(t *testing.T) {
 			got := dfs(tt.root, tt.leftRange, tt.rightRange)
 			assert.Equal(t, tt.want, got)
 		})
 	}
+
+}
+
+func BenchmarkDFS(b *testing.B) {
+	for _, tt := range dfsTests {
+		testName := fmt.Sprintf("Given: %v || Want: %v", tt.root, tt.want)
+		for n := 0; n < b.N; n++ {
+			b.Run(testName, func(b *testing.B) {
+				benchDFS(tt.root, tt.leftRange, tt.rightRange)
+			})
+		}
+
+	}
+}
+
+func benchDFS(node *Node, l, r int) {
+	// var res int
+	dfs(node, l, r)
 
 }
 

@@ -88,7 +88,7 @@ func TestDFS(t *testing.T) {
 	for _, tt := range tests {
 		name := fmt.Sprintf("Given: %v, || Want: %v", tt.root, tt.want)
 		t.Run(name, func(t *testing.T) {
-			got := bfs(tt.root, tt.leftRange, tt.rightRange)
+			got := dfs(tt.root, tt.leftRange, tt.rightRange)
 			assert.Equal(t, tt.want, got)
 		})
 	}

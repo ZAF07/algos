@@ -240,3 +240,16 @@ go-airplane-seats:
 	else\
 		go test arrays/2d-arrays/airplane_seats_test.go;\
 	fi
+
+go-dfs-single:
+	@if [ $V = "TRUE" ]; then\
+		go test binary-search-tree/depth_first_search/dfs_test.go -test.v;\
+	else\
+		go test binary-search-tree/depth_first_search/dfs_test.go;\
+	fi
+
+go-bench-dfs-single:
+	@echo "---------------💡 Running at default benchtime of 10s 💡----------------"
+	go test -bench=. -benchmem -benchtime=10s binary-search-tree/depth_first_search/dfs_test.go;\
+
+

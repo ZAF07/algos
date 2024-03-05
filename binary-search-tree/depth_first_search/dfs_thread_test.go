@@ -100,7 +100,8 @@ func TestDfsThread(t *testing.T) {
 			wg.Add(1)
 			go dfsThread(tt.root, tt.leftRange, tt.rightRange, &wg, resChan)
 
-			// Place the wg.wait and channel close inside a goroutien so that we dont block the main routine
+			// Place the wg.wait inside a goroutien so that we dont block the main routine
+			// The channel close is placed in here as well so that the moment the wg is done waiting, the closure of the channel is executed immediately
 			go func() {
 				// wait first
 				wg.Wait()

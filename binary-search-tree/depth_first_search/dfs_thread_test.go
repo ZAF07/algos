@@ -96,17 +96,19 @@ func TestDfsThread(t *testing.T) {
 			resChan := make(chan int)
 			wg := sync.WaitGroup{}
 
-			// Add 1 to the waitgroup and start the recursive call to dfs
+			// Add 1 to the waitgroup to add the first threaded call and start the recursive call to dfs
 			wg.Add(1)
 			go dfsThread(tt.root, tt.leftRange, tt.rightRange, &wg, resChan)
 
 			// Place the wg.wait and channel close inside a goroutien so that we dont block the main routine
 			go func() {
+				// wait first
 				wg.Wait()
+				// Then close the channel
 				close(resChan)
 			}()
 
-			// now receive any values from the channel and add to res
+			// now receive any values from the channel and add to res (the loop terminates when the channel is closed)
 			for r := range resChan {
 				res += r
 			}

@@ -258,3 +258,7 @@ go-dfs-thread:
 	else\
 		go test binary-search-tree/depth_first_search/dfs_thread_test.go;\
 	fi
+
+go-bench-dfs-thread:
+	@echo "---------------💡 Running at default benchtime of 10s 💡----------------"
+	go test -bench=. -benchmem -benchtime=10s binary-search-tree/depth_first_search/dfs_thread_test.go;\

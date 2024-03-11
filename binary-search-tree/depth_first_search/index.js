@@ -1,49 +1,71 @@
-
-var node4 = {
-  'name': 'Node 4',
-  'val': 4,
-  'left': null,
-  'right': null,
-}
-var node3 = {
-  'name': 'Node 3',
-  'val': 3,
-  'left': null,
-  'right': null,
-};
-var node2 = {
-  'name': 'Node 2',
-  'val': 2,
-  'left': node4,
-  'right': null,
-};
-
-var node1 = {
-  'name': 'Node 1',
-  'val': 1,
-  'left': node2,
-  'right': node3,
-}
-
-
-const result = [];
-const dfs = (node, target) => {
-  console.log('NODE: ', node.name);
-  if (node.val == target) {
-    return node.val
-    // return node.val
-  }
-  const left = node.left;
-  const right = node.right; 
-
-  if (left != null) {
-   return dfs(node.left, target)
-  }
-  
-  if (right != null) {
-     return dfs(node.right, target)
+class BSTNode {
+  constructor(value) {
+    this.val = value;
+    this.left = undefined;
+    this.right = undefined;
   }
 
+  /**
+   *
+   * @param {number} val
+   * @returns {bool}
+   * @description Takes a new value as a parameter and recursively tries to find a placement in the BST for the new value. Returns True if successful and false otherwise
+   */
+  addNode(val) {
+    const newNode = new BSTNode(val);
+
+    const addNewNode = (node, val) => {
+      if (val < node.val && node.left == undefined) {
+        node.left = newNode;
+        return true;
+      }
+
+      if (val > node.val && node.right == undefined) {
+        node.right = newNode;
+        return true;
+      }
+
+      if (val < node.val && node.left != undefined) {
+        return addNewNode(node.left, val);
+      }
+
+      if (val > node.val && node.right != undefined) {
+        return addNewNode(node.right, val);
+      }
+      return false;
+    };
+
+    return addNewNode(this, val);
+  }
+
+  /**
+   *
+   * @param {number} min
+   * @param {number} max
+   * @returns {number}
+   * @description Takes a min and max range and returns the sum of node values in the BST whose values fall between the range
+   */
+  sum(min, max) {
+    const sumValues = (node, min, max) => {
+      let sum = 0;
+      if (node.val >= min && node.val <= max) {
+        sum += node.val;
+      }
+
+      if (node.left != undefined) {
+        sum += sumValues(node.left, min, max);
+      }
+
+      if (node.right != undefined) {
+        sum += sumValues(node.right, min, max);
+      }
+      return sum;
+    };
+    return sumValues(this, min, max);
+  }
 }
 
-console.log(dfs(node1, 2));
+const node = new BSTNode(3);
+console.log(node.addNode(2));
+console.log(node.addNode(4));
+console.log("Sum --> ", node.sum(1, 6));

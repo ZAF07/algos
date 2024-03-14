@@ -54,8 +54,12 @@ func TestMaxSubArray(t *testing.T) {
 	for _, tt := range tests {
 		testName := fmt.Sprintf("Given: %v | Want: %v", tt.input, tt.want)
 		t.Run(testName, func(t *testing.T) {
+
 			got := maxSubArraySum(tt.input)
 			assert.Equal(t, tt.want, got)
+
+			got1 := maxSubArraySum2(tt.input)
+			assert.Equal(t, tt.want, got1)
 		})
 	}
 }
@@ -83,4 +87,15 @@ func maxSubArraySum(nums []int) int {
 		max = int(math.Max(float64(max), float64(cur)))
 	}
 	return max
+}
+
+func maxSubArraySum2(nums []int) int {
+	maxSum := math.MinInt
+	curSum := 0
+
+	for _, num := range nums {
+		curSum = int(math.Max(float64(num), float64(curSum+num)))
+		maxSum = int(math.Max(float64(curSum), float64(maxSum)))
+	}
+	return maxSum
 }

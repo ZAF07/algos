@@ -262,3 +262,10 @@ go-dfs-thread:
 go-bench-dfs-thread:
 	@echo "---------------💡 Running at default benchtime of 10s 💡----------------"
 	go test -bench=. -benchmem -benchtime=10s binary-search-tree/depth_first_search/dfs_thread_test.go;\
+
+go-product-of-array-except-self:
+	@if [ $V = "TRUE" ]; then\
+		go test arrays/product-of-array-except-self/product_of_array_except_self_test.go -test.v;\
+	else\
+		go test arrays/product-of-array-except-self/product_of_array_except_self_test.go;\
+	fi

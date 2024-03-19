@@ -7,7 +7,6 @@ class Node:
 
     # add a new node
     def add_node(self, value: int) -> bool:
-        # TODO: Implement recursive insert for binary tree
         def add_new_leaf(node, val):
             # Larger than current node
             if val > node.val and node.right is None:

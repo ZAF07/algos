@@ -1,4 +1,5 @@
 V=""
+BENCHTIME=0
 
 go-two-sum:
 	@if [ $V = "TRUE" ]; then\
@@ -249,8 +250,13 @@ go-dfs-single:
 	fi
 
 go-bench-dfs-single:
-	@echo "---------------💡 Running at default benchtime of 10s 💡----------------"
-	go test -bench=. -benchmem -benchtime=10s binary-search-tree/depth_first_search/dfs_test.go;\
+	@if [ $(BENCHTIME) = 0 ]; then\
+		echo "---------------💡 Running at default benchtime of 10s 💡----------------";\
+		go test -bench=. -benchmem -benchtime=10s binary-search-tree/depth_first_search/dfs_test.go;\
+	else\
+		echo "---------------💡 Running at benchtime of $(BENCHTIME)s 💡----------------";\
+		go test -bench=. -benchmem -benchtime=$(BENCHTIME)s binary-search-tree/depth_first_search/dfs_test.go;\
+	fi
 
 go-dfs-thread:
 	@if [ $V = "TRUE" ]; then\
@@ -260,8 +266,13 @@ go-dfs-thread:
 	fi
 
 go-bench-dfs-thread:
-	@echo "---------------💡 Running at default benchtime of 10s 💡----------------"
-	go test -bench=. -benchmem -benchtime=10s binary-search-tree/depth_first_search/dfs_thread_test.go;\
+	@if [ $(BENCHTIME) = 0 ]; then\
+		echo "---------------💡 Running at default benchtime of 10s 💡----------------";\
+		go test -bench=. -benchmem -benchtime=10s binary-search-tree/depth_first_search/dfs_thread_test.go;\
+	else\
+		echo "---------------💡 Running at benchtime of $(BENCHTIME)s 💡----------------";\
+		go test -bench=. -benchmem -benchtime=$(BENCHTIME)s binary-search-tree/depth_first_search/dfs_thread_test.go;\
+	fi
 
 go-product-of-array-except-self:
 	@if [ $V = "TRUE" ]; then\

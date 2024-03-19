@@ -49,6 +49,7 @@ func TestProductOfArray(t *testing.T) {
 	}
 }
 
+// TODO: Study the solution
 func product(nums []int) []int {
 	res := make([]int, len(nums))
 

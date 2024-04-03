@@ -40,6 +40,7 @@ func TestBalloon(t *testing.T) {
 // Store count of each characters in a map (BALLOON).
 // At the end we simply return the minimum number of occurances between these characters (BALLOON)
 // Because if there is enough characters to form the word ballon, all values in count will be the same.
+// Basically, if there were 4 instances of BALLOON, there would be 4 Bs, 4 As, 8Ls etc...
 
 func balloon(str string) int {
 	if len(str) < 7 {

@@ -75,7 +75,7 @@ func longestSubstring(s string) int {
 				continue
 			}
 		}
-		// Regardless of whether we have seen the letter or not, we update the seen map with the position of the current letter
+		// Regardless of whether we have seen the letter or not, we update the seen map with the position of the current letter. This is to ensure that we are checking against letters inside the current window
 		// We then calculate the length of the current window and increment the right pointer by one
 		seenMap[s[right]] = right // We update the location of the current seen letter
 		subLen := right - left + 1

@@ -11,7 +11,7 @@ import (
 
 /*
 Given an array layout, with its first element representing the total number of desks in a classroom and elements [1:] representing the occupied seats,
-calculate the numnber of possible seat allocations 2 new students can be allocated to such that they are either next to or across each other.
+calculate the numnber of possible seat allocations 2 new students can be allocated to such that they are either next to or across each other. The desks in a class room are placed in 2 rows with 2 columns.
 
 Example:
 Given: [6, 4]

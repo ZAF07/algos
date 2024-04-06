@@ -280,3 +280,10 @@ go-product-of-array-except-self:
 	else\
 		go test arrays/product-of-array-except-self/product_of_array_except_self_test.go;\
 	fi
+
+go-classrooom-seats:
+	@if [ $V = "TRUE" ]; then\
+		go test arrays/classrooom-seats/classroom_seats_test.go -v;\
+	else\
+		go test arrays/classroom-seats/classroom_seats_test.go;\
+	fi

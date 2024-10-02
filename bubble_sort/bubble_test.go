@@ -77,6 +77,7 @@ func bubbleTwo(nums []int) []int {
 }
 
 // Bubble sort with a for loop..
+// This method is better optimised for nearly or already sorted arrays. The swapped flag ensures that the loop does not run when the array is already sorted
 func bubbleSortLoop(nums []int) []int {
 	swapped := true
 	for swapped {

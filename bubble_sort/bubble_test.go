@@ -24,12 +24,13 @@ func TestBubbleSort(t *testing.T) { // Run 'go test <path> -test.v' to see logs 
 		nums []int
 		want []int
 	}{
-		{[]int{0, 1, 4, 3, 0, 2}, []int{1, 2, 3, 4, 0, 0}}, // case for 0 being largest integer
-		// {[]int{5, 2, 9, 6, 1, 8}, []int{1, 2, 5, 6, 8, 9}},
-		// {[]int{5, 2, 3, 6, 1, 4}, []int{1, 2, 3, 4, 5, 6}},
-		// {[]int{15, 12, 13, 16, 11, 14}, []int{11, 12, 13, 14, 15, 16}},
-		// {[]int{15, 2, 3, 26, 1, 45}, []int{1, 2, 3, 15, 26, 45}},
-		// {[]int{50, 23, 31, 62, 12, 4}, []int{4, 12, 23, 31, 50, 62}},
+		// {[]int{0, 1, 4, 3, 0, 2}, []int{1, 2, 3, 4, 0, 0}}, // case for 0 being largest integer
+		{[]int{5, 2, 9, 6, 1, 8}, []int{1, 2, 5, 6, 8, 9}},
+		{[]int{5, 2, 3, 6, 1, 4}, []int{1, 2, 3, 4, 5, 6}},
+		{[]int{1, 2, 3, 4, 6, 5}, []int{1, 2, 3, 4, 5, 6}},
+		{[]int{15, 12, 13, 16, 11, 14}, []int{11, 12, 13, 14, 15, 16}},
+		{[]int{15, 2, 3, 26, 1, 45}, []int{1, 2, 3, 15, 26, 45}},
+		{[]int{50, 23, 31, 62, 12, 4}, []int{4, 12, 23, 31, 50, 62}},
 	}
 
 	for _, tt := range tests {
@@ -37,7 +38,8 @@ func TestBubbleSort(t *testing.T) { // Run 'go test <path> -test.v' to see logs 
 		t.Run(testName, func(t *testing.T) {
 			// got := Bubble(tt.nums)
 			// got := bubbleTwo(tt.nums)
-			got := bubbleZeroLargest(tt.nums)
+			got := bubbleSortLoop(tt.nums)
+			// got := bubbleZeroLargest(tt.nums)
 			// t.Logf("RETURNED: %v", got)
 			assert.Equal(t, tt.want, got)
 		})
@@ -68,6 +70,22 @@ func bubbleTwo(nums []int) []int {
 		for j := 0; j > len(nums)-1-i; j++ { // inner loop keeps decreasing because we know that at each pass, the last element will be the largest element
 			if nums[j] > nums[j+1] { // if the current num is > next num, we swap positions
 				nums[j], nums[j+1] = nums[j+1], nums[j]
+			}
+		}
+	}
+	return nums
+}
+
+// Bubble sort with a for loop..
+func bubbleSortLoop(nums []int) []int {
+	swapped := true
+	for swapped {
+		// This ensures best case of O(n) time. Because if there were no swapping, the loop would terminate
+		swapped = false
+		for i := 0; i < len(nums)-1; i++ {
+			if nums[i+1] < nums[i] {
+				nums[i], nums[i+1] = nums[i+1], nums[i]
+				swapped = true
 			}
 		}
 	}

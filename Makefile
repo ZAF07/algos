@@ -287,9 +287,9 @@ go-classrooom-seats:
 	else\
 		go test arrays/classroom-seats/classroom_seats_test.go;\
 	fi
-go-range-sum-query:
+go-range-sum-query-immutable:
 	@if [ $V = "TRUE" ]; then\
-		go test arrays/prefix-sum/range_sum_query_test.go -v;\
+		go test arrays/prefix-sum/range_sum_query_immutable_test.go -v;\
 	else\
-		go test arrays/prefix-sum/range_sum_query_test.go;\
+		go test arrays/prefix-sum/range_sum_query_immutable_test.go;\
 	fi
